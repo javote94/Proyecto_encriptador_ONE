@@ -14,33 +14,51 @@
   </head>
 
   <body>
-
+    <!-- HEADER -->
     <header>
-      <img src="img/Logo.svg" alt="Logo de Alura" class=" logo">
+      <a class="logo" href="https://www.aluracursos.com/" target="_blank" rel="noopener noreferrer">
+        <img src="img/Logo.svg" alt="Logo de Alura">
+      </a>
+      <div>
+        Elemento 2
+      </div>
     </header>
 
+    <!-- MAIN -->
     <main>
 
-      <section>
-        <textarea class="text-area" cols="30" rows="10" placeholder="Ingrese el texto aquí"></textarea>
-        <div>
-          <h6 class="advertencia">Solo letras minúsculas y sin acentos</h6>
-        </div>
-        <div class="botones">
-          <button class="btn-encriptar">Encriptar</button>
-          <button class="btn-desencriptar">Desencriptar</button>
+      <section class="seccion-izquierda">
+        <textarea class="input-usuario" placeholder="Ingrese el texto aquí"></textarea>
+        <p class="mensaje-advertencia"><img src="" alt="">Solo letras minúsculas y sin acentos</p>
+        <div class="contenedor-botones">
+          <button class="btn-encriptar btn-efecto">Encriptar</button>
+          <button class="btn-desencriptar btn-efecto">Desencriptar</button>
         </div>
       </section>
 
-      <section>
-        <textarea class="mensaje" cols="20" rows="10"></textarea>
-        <div>
-          <button class="btn-copiar">Copiar</button>
+      <section class="seccion-derecha">
+        <div class="contenedor-muñeco">
+          <img src="img/Muñeco.svg" alt="">
+          <p>Ningun mensaje fue encontrado</p>
+          <p>Ingresá el texto que desees encriptar o desencriptar</p>
         </div>
+        <textarea class="output-usuario" cols="20" rows="10"></textarea>
+        <button class="btn-copiar btn-efecto">Copiar</button>
       </section>
 
     </main>
 
+    <!-- FOOTER -->
+    <footer>
+      <div class="contenedor-iconos">
+        <a href="" target="_blank" rel="noopener noreferrer">Icono 1</a>
+        <a href="" target="_blank" rel="noopener noreferrer">Icono 2</a>
+        <a href="mailto:javier@micorreo.com" target="_blank" rel="noopener noreferrer">Icono 3</a>
+      </div>
+      <div class="derechos-de-autor">Creado por Javier Rameri (2024) &#169;</div>
+    </footer>
+
+    <!--JavaScript-->
     <script src="app.js"></script>
   </body>
 

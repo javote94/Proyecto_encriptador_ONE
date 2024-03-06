@@ -1,57 +1,93 @@
+/******************************************** ESTILOS GENERALES ********************************************/
 * {
-  background: rgba(243, 245, 252, 1);
+  /*el ancho y la altura de los elementos incluirán el contenido, el padding y el borde, pero no el margen.*/
+  box-sizing: border-box;
+  background-color: rgba(243, 245, 252, 1);
+  /*Define la fuente de todos los textos*/
   font-family: 'Inter';
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 150%;
+  font-size: 23px;
+  font-weight: 300;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+/******************************************** HEADER ********************************************/
+header {
+  /*ocupe el 100% del ancho del viewport.*/
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 255, 0.253);
+  border-bottom: 1px solid grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  padding-top: 10px;
-  margin-left: 10px;
-  width: 10%;
+  background-color: transparent;
 }
 
+.logo img {
+  background-color: transparent;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+  transition: 350ms ease;
+}
+
+header div {
+  border: 2px solid black;
+}
+
+
+/******************************************** MAIN ********************************************/
 main {
   display: flex;
-  margin-bottom: 10px;
-  margin-left: 100px;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.text-area {
-  border: none;
-  color: #0a3871;
-  margin-top: 90px;
-  text-transform: lowercase;
-  line-height: 72%;
+.seccion-izquierda {
+  /*que ocupe el 50% del ancho del main (elemento que lo contiene)*/
+  width: 55%;
+  display: flex;
+  flex-direction: column;
 }
 
-::placeholder {
-  color: #0a3871;
+.seccion-derecha {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-.text-area:focus {
+textarea {
+  border-radius: 15px;
   outline: none;
-}
-
-.mensaje {
-  background: white;
-  background-image: url("img/Muñeco.svg");
-  background-repeat: no-repeat;
   border: none;
-  border-radius: 24px;
-  color: #0a3871;
-  margin-left: 98px;
-  margin-top: 20px;
-  padding-left: 20px;
-  position: fixed;
+  resize: none;
+  padding: 10px;
+  box-shadow: 0px 0px 56px -14px rgba(0, 0, 0, 0.15);
 }
 
-.mensaje:focus {
-  outline: none;
+.input-usuario {
+  height: 100%;
 }
 
-.botones {
+.mensaje-advertencia {
+  color: #495057;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.contenedor-botones {
   display: flex;
   margin-top: 18px;
 }
@@ -62,8 +98,8 @@ main {
   border-radius: 24px;
   color: white;
   cursor: pointer;
-  height: 67px;
-  width: 328px;
+  padding: 5px 40px;
+  margin: 0 3%;
 }
 
 .btn-desencriptar {
@@ -72,9 +108,45 @@ main {
   border-radius: 24px;
   color: #0a3871;
   cursor: pointer;
-  height: 67px;
-  width: 328px;
-  margin-left: 30px;
+  padding: 5px 40px;
+  margin: 0 3%;
+}
+
+.contenedor-muñeco {
+  position: absolute;
+  /*position: absolute, para que el elemento se posicione por fuera del flujo normal de la página y
+  en relación al elemento contenedor section*/
+  top: 99px;
+  left: 32px;
+  height: 109px;
+  width: 222px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  /*z-index: 1, significa que el elemento se superpone*/
+  background-color: transparent;
+}
+
+.contenedor-muñeco img {
+  width: 100%;
+  background-color: transparent;
+}
+
+
+.contenedor-muñeco p {
+  font-size: 16px;
+  text-align: center;
+  padding: 3%;
+  background-color: white;
+}
+
+.output-usuario {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: white;
 }
 
 .btn-copiar {
@@ -82,21 +154,35 @@ main {
   border-radius: 24px;
   color: #0a3871;
   cursor: pointer;
-  height: 67px;
-  width: 363px;
-  margin-left: 108px;
-  margin-top: 402px;
-  position: fixed;
+  padding: 5px 40px;
+  margin-top: 18px;
 }
 
-.advertencia {
-  color: #495057;
-  font-size: 18px;
+.btn-efecto:hover {
+  transform: scale(1.05);
+  transition: 250ms ease;
 }
 
+/******************************************** FOOTER ********************************************/
 
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
+footer {
+  width: 100%;
+  background-color: #18185a;
+  border-top: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contenedor-iconos {
+  padding: 10px;
+  background-color: transparent;
+}
+
+.derechos-de-autor {
+  background-color: transparent;
+  font-size: 15px;
+  color: white;
+  padding: 10px;
 }

@@ -1,17 +1,25 @@
-const textArea = document.querySelector(".text-area");
+const textArea = document.querySelector(".input-usuario");
 const btnEncriptar = document.querySelector(".btn-encriptar");
 const btnDesencriptar = document.querySelector(".btn-desencriptar");
-const mensaje = document.querySelector(".mensaje");
+const mensaje = document.querySelector(".output-usuario");
 const btnCopiar = document.querySelector(".btn-copiar");
+const contenedorMunieco = document.querySelector(".contenedor-muñeco");
 
 
 //!......................................MANEJADORES DE EVENTOS......................................
+textArea.addEventListener("input", function () {
+  if (textArea.value != "" || mensaje.value != "") {
+    contenedorMunieco.style.display = "none"; //la imagen del output desaparece cuando hay contenido escrito en el textarea
+  } else {
+    contenedorMunieco.style.display = "flex";
+  }
+});
+
 btnEncriptar.addEventListener("click", function () {
   if (textArea.value.trim().length > 0) {
     let textoEncriptado = encriptarTexto(textArea.value);  //encripta el texto del usuario
     mostrarMensaje(textoEncriptado);  //muestra el resultado
     textArea.value = "";  //vacía el textarea
-    mensaje.style.backgroundImage = "none";  //saca la imagen del lugar donde se muestra el resultado
 
   } else {
     alert("Por favor, ingresa el texto a encriptar");
