@@ -7,11 +7,17 @@ const contenedorMunieco = document.querySelector(".contenedor-muñeco");
 
 
 //!......................................MANEJADORES DE EVENTOS......................................
+document.addEventListener("DOMContentLoaded", function () {
+  btnCopiar.style.display = "none";  //al momento que se carga el documento HTML, se oculta el botón copiar
+});
+
 textArea.addEventListener("input", function () {
   if (textArea.value != "" || mensaje.value != "") {
-    contenedorMunieco.style.display = "none"; //la imagen del output desaparece cuando hay contenido escrito en el textarea
+    contenedorMunieco.style.display = "none"; //cuando hay contenido escrito en el textarea la imagen del output desaparece
+    btnCopiar.style.display = "";  //y aparece el boton copiar
   } else {
-    contenedorMunieco.style.display = "flex";
+    contenedorMunieco.style.display = "";
+    btnCopiar.style.display = "none";
   }
 });
 

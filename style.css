@@ -22,7 +22,6 @@ header {
   /*ocupe el 100% del ancho del viewport.*/
   width: 100%;
   padding: 10px;
-  background-color: rgba(0, 0, 255, 0.253);
   border-bottom: 1px solid grey;
   display: flex;
   flex-direction: row;
@@ -53,19 +52,24 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex: 1;
+  padding: 25px;
 }
 
 .seccion-izquierda {
-  /*que ocupe el 50% del ancho del main (elemento que lo contiene)*/
+  /*que ocupe el 55% del ancho del main (elemento que lo contiene)*/
   width: 55%;
   display: flex;
   flex-direction: column;
 }
 
 .seccion-derecha {
+  width: 30%;
   display: flex;
   flex-direction: column;
   position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
 textarea {
@@ -81,21 +85,34 @@ textarea {
   height: 100%;
 }
 
-.mensaje-advertencia {
+.contenedor-advertencia {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: transparent;
+  margin-top: 3px;
+}
+
+.contenedor-advertencia img {
+  margin-right: 3px;
+}
+
+.contenedor-advertencia p {
   color: #495057;
   background-color: transparent;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .contenedor-botones {
   display: flex;
   margin-top: 18px;
+  justify-content: space-around;
 }
 
 .btn-encriptar {
   background-color: #0a3871;
   border: 1px solid #0a3871;
-  border-radius: 24px;
+  border-radius: 15px;
   color: white;
   cursor: pointer;
   padding: 5px 40px;
@@ -105,7 +122,7 @@ textarea {
 .btn-desencriptar {
   background-color: #d8dfe8;
   border: 1px solid #0a3871;
-  border-radius: 24px;
+  border-radius: 15px;
   color: #0a3871;
   cursor: pointer;
   padding: 5px 40px;
@@ -116,10 +133,8 @@ textarea {
   position: absolute;
   /*position: absolute, para que el elemento se posicione por fuera del flujo normal de la página y
   en relación al elemento contenedor section*/
-  top: 99px;
-  left: 32px;
-  height: 109px;
-  width: 222px;
+  height: 209px;
+  width: 263px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -134,12 +149,16 @@ textarea {
   background-color: transparent;
 }
 
-
 .contenedor-muñeco p {
-  font-size: 16px;
+  font-size: 13px;
   text-align: center;
   padding: 3%;
   background-color: white;
+}
+
+.contenedor-muñeco p:first-of-type {
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .output-usuario {
@@ -147,15 +166,19 @@ textarea {
   height: 100%;
   width: 100%;
   background-color: white;
+  flex: 1;
 }
 
 .btn-copiar {
+  background-color: white;
   border: 1px solid #0a3871;
-  border-radius: 24px;
+  border-radius: 15px;
   color: #0a3871;
   cursor: pointer;
   padding: 5px 40px;
-  margin-top: 18px;
+  margin-top: -50px;
+  z-index: 1;
+  width: 60%;
 }
 
 .btn-efecto:hover {
@@ -176,13 +199,35 @@ footer {
 }
 
 .contenedor-iconos {
-  padding: 10px;
+  padding: 15px 5px 0px 5px;
   background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenedor-iconos a {
+  background-color: transparent;
+  margin: 0 5px;
+}
+
+.contenedor-iconos img {
+  background-color: transparent;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.contenedor-iconos img:hover {
+  transform: scale(1.05);
+  transition: 350ms ease;
 }
 
 .derechos-de-autor {
   background-color: transparent;
-  font-size: 15px;
+  font-size: 12px;
   color: white;
   padding: 10px;
+  font-family: 'Inter';
 }
