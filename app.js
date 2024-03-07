@@ -28,7 +28,7 @@ btnEncriptar.addEventListener("click", function () {
     textArea.value = "";  //vacía el textarea
 
   } else {
-    alert("Por favor, ingresa el texto a encriptar");
+    miAlerta("error", "Por favor, ingresa el texto a encriptar");
     mostrarMensaje("");
   }
 });
@@ -40,7 +40,7 @@ btnDesencriptar.addEventListener("click", function () {
     textArea.value = "";
 
   } else {
-    alert("Por favor, ingresa el texto a desencriptar");
+    miAlerta("error", "Por favor, ingresa el texto a desencriptar");
     mostrarMensaje("");
   }
 
@@ -49,8 +49,8 @@ btnDesencriptar.addEventListener("click", function () {
 btnCopiar.addEventListener("click", function () {
   mensaje.select();
   navigator.clipboard.writeText(mensaje.value)
-    .then(() => { alert("Texto copiado al portapapeles"); })
-    .catch(error => { alert("No se pudo copiar el texto: ", error); });
+    .then(() => { miAlerta("success", "Texto copiado al portapapeles"); })
+    .catch(error => { miAlerta("error", "No se pudo copiar el texto"); });
 });
 
 //*......................................FUNCIONES......................................
@@ -92,6 +92,16 @@ function desencriptarTexto(textoUsuario) {
 
 function mostrarMensaje(frase) {
   mensaje.innerText = frase;
+}
+
+function miAlerta(icono, mensaje) {
+  Swal.fire({
+    icon: icono,
+    text: mensaje,
+    timer: 1500,
+    showConfirmButton: false,
+    width: '30%'
+  });
 }
 
 //Matriz que contiene las llaves de encriptación
