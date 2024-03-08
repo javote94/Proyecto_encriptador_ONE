@@ -62,14 +62,14 @@ main {
   background-color: rgba(243, 245, 252, 1);
 }
 
-.seccion-izquierda {
+.input-section {
   /*que ocupe el 55% del ancho del main (elemento que lo contiene)*/
   width: 55%;
   display: flex;
   flex-direction: column;
 }
 
-.seccion-derecha {
+.output-section {
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -99,12 +99,13 @@ textarea::-webkit-scrollbar-thumb {
   border-radius: 10px;
 }
 
-.input-usuario {
+.input-section__textarea {
   height: 100%;
   color: #0a3871;
+  background-color: rgba(243, 245, 252, 1);
 }
 
-.contenedor-advertencia {
+.input-section__container-warning {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -112,23 +113,23 @@ textarea::-webkit-scrollbar-thumb {
   margin-top: 1%;
 }
 
-.contenedor-advertencia img {
+.input-section__container-warning img {
   margin-right: 3px;
 }
 
-.contenedor-advertencia p {
+.input-section__container-warning p {
   color: #495057;
   background-color: transparent;
   font-size: 15px;
 }
 
-.contenedor-botones {
+.input-section__container-buttons {
   display: flex;
   margin-top: 3%;
   justify-content: space-around;
 }
 
-.btn-encriptar {
+.btn-encrypt {
   background-color: #0a3871;
   border: 1px solid #0a3871;
   border-radius: 15px;
@@ -138,7 +139,7 @@ textarea::-webkit-scrollbar-thumb {
   margin: 0 3%;
 }
 
-.btn-desencriptar {
+.btn-decrypt {
   background-color: #d8dfe8;
   border: 1px solid #0a3871;
   border-radius: 15px;
@@ -148,7 +149,7 @@ textarea::-webkit-scrollbar-thumb {
   margin: 0 3%;
 }
 
-.contenedor-muñeco {
+.output-section__container-not-message {
   position: absolute;
   /*position: absolute, para que el elemento se posicione por fuera del flujo normal de la página y
   en relación al elemento contenedor section*/
@@ -161,25 +162,25 @@ textarea::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
-.contenedor-muñeco img {
+.output-section__container-not-message img {
   width: 100%;
   background-color: transparent;
   height: 15rem;
 }
 
-.contenedor-muñeco p {
+.output-section__container-not-message p {
   font-size: 0.9rem;
   text-align: center;
   padding: 3%;
   background-color: transparent;
 }
 
-.contenedor-muñeco p:first-of-type {
+.output-section__container-not-message p:first-of-type {
   font-size: 1rem;
   font-weight: bold;
 }
 
-.output-usuario {
+.output-section__textarea {
   position: relative;
   height: 100%;
   width: 100%;
@@ -189,7 +190,7 @@ textarea::-webkit-scrollbar-thumb {
 
 }
 
-.btn-copiar {
+.btn-copy {
   position: absolute;
   bottom: 3%;
   z-index: 1;
@@ -202,7 +203,7 @@ textarea::-webkit-scrollbar-thumb {
   padding: 1%;
 }
 
-.btn-efecto:hover {
+.btn-effect:hover {
   transform: scale(1.05);
   transition: 250ms ease;
 }
@@ -219,7 +220,7 @@ footer {
   flex-direction: column;
 }
 
-.contenedor-iconos {
+.container-icons {
   padding: 1% 0.3% 0 0.3%;
   background-color: transparent;
   display: flex;
@@ -228,23 +229,23 @@ footer {
   justify-content: center;
 }
 
-.contenedor-iconos a {
+.container-icons a {
   background-color: transparent;
   margin: 0 0.3rem;
 }
 
-.contenedor-iconos img {
+.container-icons img {
   background-color: transparent;
   width: 1.4rem;
   cursor: pointer;
 }
 
-.contenedor-iconos img:hover {
+.container-icons img:hover {
   transform: scale(1.05);
   transition: 350ms ease;
 }
 
-.derechos-de-autor {
+.copyright {
   background-color: transparent;
   font-size: 0.8rem;
   color: white;
@@ -262,46 +263,46 @@ footer {
     gap: 2rem;
   }
 
-  .seccion-izquierda {
+  .input-section {
     width: 100%;
     height: 30rem;
     padding: 3%;
   }
 
-  .seccion-derecha {
+  .output-section {
     width: 100%;
     height: 12rem;
     padding: 3%;
   }
 
-  .contenedor-muñeco img {
+  .output-section__container-not-message img {
     display: none;
   }
 
-  .btn-copiar {
-    bottom: 14%;
-  }
-
-  .contenedor-muñeco p {
+  .output-section__container-not-message p {
     font-size: 1rem;
   }
 
-  .contenedor-muñeco p:first-of-type {
+  .output-section__container-not-message p:first-of-type {
     font-size: 1.5rem;
+  }
+
+  .btn-copy {
+    bottom: 14%;
   }
 }
 
 /*Mobile*/
 @media screen and (max-width: 375px) {
-  .contenedor-botones {
+  .input-section__container-buttons {
     flex-direction: column;
   }
 
-  .btn-encriptar {
+  .btn-encrypt {
     margin: 2% 0;
   }
 
-  .btn-desencriptar {
+  .btn-decrypt {
     margin: 2% 0;
   }
 

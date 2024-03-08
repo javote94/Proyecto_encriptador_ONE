@@ -1,111 +1,112 @@
-const textArea = document.querySelector(".input-usuario");
-const btnEncriptar = document.querySelector(".btn-encriptar");
-const btnDesencriptar = document.querySelector(".btn-desencriptar");
-const mensaje = document.querySelector(".output-usuario");
-const btnCopiar = document.querySelector(".btn-copiar");
-const contenedorMunieco = document.querySelector(".contenedor-muñeco");
+/*...................................... CAPTURE ELEMENTS ......................................*/
+const textAreaInp = document.querySelector(".input-section__textarea");
+const btnEncrypt = document.querySelector(".btn-encrypt");
+const btnDecrypt = document.querySelector(".btn-decrypt");
+const textAreaOut = document.querySelector(".output-section__textarea");
+const btnCopy = document.querySelector(".btn-copy");
+const containerNotMessage = document.querySelector(".output-section__container-not-message");
 
 
-//!......................................MANEJADORES DE EVENTOS......................................
+//!......................................EVENT HANDLERS......................................
 document.addEventListener("DOMContentLoaded", function () {
-  btnCopiar.style.display = "none";  //al momento que se carga el documento HTML, se oculta el botón copiar
+  btnCopy.style.display = "none";  //al momento que se carga el documento HTML, se oculta el botón copiar
 });
 
-textArea.addEventListener("input", function () {
-  if (textArea.value != "" || mensaje.value != "") {
-    contenedorMunieco.style.display = "none"; //cuando hay contenido escrito en el textarea la imagen del output desaparece
-    btnCopiar.style.display = "";  //y aparece el boton copiar
+textAreaInp.addEventListener("input", function () {
+  if (textAreaInp.value != "" || textAreaOut.value != "") {
+    containerNotMessage.style.display = "none"; //cuando hay contenido escrito en el textarea la imagen del output desaparece
+    btnCopy.style.display = "";  //y aparece el boton copiar
   } else {
-    contenedorMunieco.style.display = "";
-    btnCopiar.style.display = "none";
+    containerNotMessage.style.display = "";
+    btnCopy.style.display = "none";
   }
 });
 
-btnEncriptar.addEventListener("click", function () {
-  if (textArea.value.trim().length > 0) {
-    let textoEncriptado = encriptarTexto(textArea.value);  //encripta el texto del usuario
-    mostrarMensaje(textoEncriptado);  //muestra el resultado
-    textArea.value = "";  //vacía el textarea
+btnEncrypt.addEventListener("click", function () {
+  if (textAreaInp.value.trim().length > 0) {
+    let encryptedText = encryptText(textAreaInp.value);  //encripta el texto del usuario
+    showMessageOutput(encryptedText);  //muestra el resultado
+    textAreaInp.value = "";  //vacía el textarea
 
   } else {
-    miAlerta("error", "Por favor, ingresa el texto a encriptar");
-    mostrarMensaje("");
+    myAlert("error", "Por favor, ingresa el texto a encriptar");
+    showMessageOutput("");
   }
 });
 
-btnDesencriptar.addEventListener("click", function () {
-  if (textArea.value.trim().length > 0) {
-    let textoDesencriptado = desencriptarTexto(textArea.value);
-    mostrarMensaje(textoDesencriptado);
-    textArea.value = "";
+btnDecrypt.addEventListener("click", function () {
+  if (textAreaInp.value.trim().length > 0) {
+    let decryptedText = decryptText(textAreaInp.value);
+    showMessageOutput(decryptedText);
+    textAreaInp.value = "";
 
   } else {
-    miAlerta("error", "Por favor, ingresa el texto a desencriptar");
-    mostrarMensaje("");
+    myAlert("error", "Por favor, ingresa el texto a desencriptar");
+    showMessageOutput("");
   }
 
 });
 
-btnCopiar.addEventListener("click", function () {
-  mensaje.select();
-  navigator.clipboard.writeText(mensaje.value)
-    .then(() => { miAlerta("success", "Texto copiado al portapapeles"); })
-    .catch(error => { miAlerta("error", "No se pudo copiar el texto"); });
+btnCopy.addEventListener("click", function () {
+  textAreaOut.select();
+  navigator.clipboard.writeText(textAreaOut.value)
+    .then(() => { myAlert("success", "Texto copiado al portapapeles"); })
+    .catch(error => { myAlert("error", "No se pudo copiar el texto"); });
 });
 
-//*......................................FUNCIONES......................................
-function encriptarTexto(textoUsuario) {
+//*......................................FUNCTIONS......................................
+function encryptText(textUser) {
 
   //Inicializo variable que alojará el texto encriptado
-  let textoEncriptado = "";
+  let encryptedText = "";
 
   //Cifrado letra por letra hasta encriptar todo el texto
-  for (let t = 0; t < textoUsuario.length; t++) {
+  for (let t = 0; t < textUser.length; t++) {
 
-    let letraEncriptada = false;
+    let encryptedLetter = false;
 
-    for (let i = 0; i < matriz.length; i++) {
-      if (textoUsuario[t] == matriz[i][0]) {
-        textoEncriptado += matriz[i][1];
-        letraEncriptada = true;
+    for (let i = 0; i < matrix.length; i++) {
+      if (textUser[t] == matrix[i][0]) {
+        encryptedText += matrix[i][1];
+        encryptedLetter = true;
         break;
       }
     }
 
-    if (!letraEncriptada) {
-      textoEncriptado += textoUsuario[t];
+    if (!encryptedLetter) {
+      encryptedText += textUser[t];
     }
   }
-  return textoEncriptado;
+  return encryptedText;
 }
 
-function desencriptarTexto(textoUsuario) {
+function decryptText(textUser) {
 
   //Descifrado letra por letra y alojarlo en la misma variable
-  for (let i = 0; i < matriz.length; i++) {
-    if (textoUsuario.includes(matriz[i][1])) {
-      textoUsuario = textoUsuario.replaceAll(matriz[i][1], matriz[i][0]);
+  for (let i = 0; i < matrix.length; i++) {
+    if (textUser.includes(matrix[i][1])) {
+      textUser = textUser.replaceAll(matrix[i][1], matrix[i][0]);
     }
   }
-  return textoUsuario;
+  return textUser;
 }
 
-function mostrarMensaje(frase) {
-  mensaje.innerText = frase;
+function showMessageOutput(phrase) {
+  textAreaOut.innerText = phrase;
 }
 
-function miAlerta(icono, mensaje) {
+function myAlert(icon, message) {
   Swal.fire({
-    icon: icono,
-    text: mensaje,
+    icon: icon,
+    text: message,
     timer: 1500,
     showConfirmButton: false,
-    width: '30%'
+    width: '30em'
   });
 }
 
 //Matriz que contiene las llaves de encriptación
-const matriz = [
+const matrix = [
   ["a", "ai"],
   ["e", "enter"],
   ["i", "imes"],
