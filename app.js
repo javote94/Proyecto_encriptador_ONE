@@ -1,4 +1,4 @@
-/*...................................... CAPTURE ELEMENTS ......................................*/
+//?...................................... CAPTURE ELEMENTS ......................................
 const textAreaInp = document.querySelector(".input-section__textarea");
 const btnEncrypt = document.querySelector(".btn-encrypt");
 const btnDecrypt = document.querySelector(".btn-decrypt");
@@ -7,33 +7,48 @@ const btnCopy = document.querySelector(".btn-copy");
 const containerNotMessage = document.querySelector(".output-section__container-not-message");
 
 
-//!......................................EVENT HANDLERS......................................
+//!...................................... EVENT HANDLERS ......................................
+//*Se carga el HTML con el botón 'copiar' oculto
 document.addEventListener("DOMContentLoaded", function () {
-  btnCopy.style.display = "none";  //al momento que se carga el documento HTML, se oculta el botón copiar
+  btnCopy.style.display = "none";
 });
 
+//*Si hay contenido en el textarea, se oculta el contenedor 'not-message' y se visibiliza el botón 'copiar'
 textAreaInp.addEventListener("input", function () {
   if (textAreaInp.value != "" || textAreaOut.value != "") {
-    containerNotMessage.style.display = "none"; //cuando hay contenido escrito en el textarea la imagen del output desaparece
-    btnCopy.style.display = "";  //y aparece el boton copiar
+    containerNotMessage.style.display = "none";
+    btnCopy.style.display = "";
   } else {
     containerNotMessage.style.display = "";
     btnCopy.style.display = "none";
   }
 });
 
+//*Al hace click en el botón 'encriptar', se encripta el contenido del input-textarea y se visibiliza el texto encriptado en el output-textarea
 btnEncrypt.addEventListener("click", function () {
-  if (textAreaInp.value.trim().length > 0) {
-    let encryptedText = encryptText(textAreaInp.value);  //encripta el texto del usuario
-    showMessageOutput(encryptedText);  //muestra el resultado
-    textAreaInp.value = "";  //vacía el textarea
 
+  const textUser = textAreaInp.value.trim();  //captura el valor actual del textarea
+  const regex = /^[a-z\s]*$/;  //expresión regular especificada
+
+  if (textUser.length > 0) {  //1era validación: debe haber contenido en el textarea
+
+    if (regex.test(textUser)) {  //2da validación: verifica el valor del textarea con la expresión regular
+      let encryptedText = encryptText(textAreaInp.value);
+      showMessageOutput(encryptedText);
+      textAreaInp.value = "";
+
+    } else {
+      myAlert("error", "El texto ingresado no cumple las restricciones indicadas");
+      showMessageOutput("");
+    }
   } else {
     myAlert("error", "Por favor, ingresa el texto a encriptar");
     showMessageOutput("");
   }
+
 });
 
+//*Al hace click en el botón 'desencriptar', se desencripta el contenido volcado en el input-textarea y se visibiliza el texto desencriptado en el output-textarea
 btnDecrypt.addEventListener("click", function () {
   if (textAreaInp.value.trim().length > 0) {
     let decryptedText = decryptText(textAreaInp.value);
@@ -47,6 +62,7 @@ btnDecrypt.addEventListener("click", function () {
 
 });
 
+//*Al hace click en el botón 'copiar', se guarda el contenido del output-textarea en el portapapeles
 btnCopy.addEventListener("click", function () {
   textAreaOut.select();
   navigator.clipboard.writeText(textAreaOut.value)
@@ -54,7 +70,8 @@ btnCopy.addEventListener("click", function () {
     .catch(error => { myAlert("error", "No se pudo copiar el texto"); });
 });
 
-//*......................................FUNCTIONS......................................
+
+//TODO...................................... FUNCTIONS ......................................
 function encryptText(textUser) {
 
   //Inicializo variable que alojará el texto encriptado
@@ -105,6 +122,7 @@ function myAlert(icon, message) {
   });
 }
 
+//?...................................... MATRIZ ......................................
 //Matriz que contiene las llaves de encriptación
 const matrix = [
   ["a", "ai"],
